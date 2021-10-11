@@ -1,7 +1,10 @@
+#include "Engine/Game.hh"
 #include <iostream>
 
 int main()
 {
-    std::cin.get();
-    return EXIT_SUCCESS;
+  Game* game{new Game()};
+  game->Run();
+
+  return EXIT_SUCCESS;
 }
