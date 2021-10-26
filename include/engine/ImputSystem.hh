@@ -8,6 +8,5 @@ private:
 public:
   InputSystem();
   ~InputSystem();
-
   static sf::Vector2f GetAxis();
 };

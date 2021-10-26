@@ -1,32 +1,37 @@
-#include<SFML/Graphics.hpp>
+#include "ImputSystem.hh"
 
-class InputSystem
+InputSystem::InputSystem()
 {
-public:
-  InputSystem(){}
-  ~InputSystem(){}
+}
 
-  static sf::Vector2f Axis()
+InputSystem::~InputSystem()
+{
+}
+
+sf::Vector2f InputSystem::GetAxis()
+{
+  sf::Vector2f axis{};
+
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) ||
+  sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
   {
-    sf::Vector2f axis{};
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) | sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-    {
-      axis.x = 1;
-    }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) | sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-    {
-      axis.x = -1;
-    }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) | sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-    {
-      axis.y = -1;
-    }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) | sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-    {
-      axis.y = 1;
-    }
-
-    return axis;
+    axis.x = 1;
   }
-};
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) ||
+  sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
+  {
+    axis.x = -1;
+  }
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) ||
+  sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
+  {
+    axis.y = -1;
+  }
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) ||
+  sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
+  {
+    axis.y = 1;
+  }
+
+  return axis;
+}

@@ -1,22 +1,32 @@
 #pragma once
+#include<iostream>
 #include<SFML/Graphics.hpp>
+#include<box2d/box2d.h>
+#include "DrawPhysis.hh"
+#include "GameObject.hh"
+#include "ContactEventManager.hh"
 
 class Game
 {
 private:
   sf::RenderWindow* window{};
   sf::Event* event{};
-
-  void Update();
-  void Render();
-  void Input();
-  void Start();
-  void Draw();
+  b2World* world{};
+  b2Vec2* gravity{};
+  b2Draw* drawPhysics{};
+  ContactEventManager* contactEventManager{};
+  float deltaTime{};
+  sf::Clock* gameClock{};
+  std::vector<GameObject*>* gameObjects;
   void MainLoop();
-  void Destroy();
   void UpdatePhysics();
+  void Update();
+  void Start();
+  void Render();
+  void Draw();
+  void InputHandle();
 public:
   Game();
   ~Game();
-  void Initialize();
+  void Run();
 };
